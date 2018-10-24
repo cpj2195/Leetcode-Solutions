@@ -14,6 +14,7 @@ void add_edge_undirected(int v, int w);
 void add_edge_directed(int source, int dest);
 void print_graph();
 void get_listsize();
+void dfs(int vertex);
 
 };
 
@@ -76,6 +77,37 @@ void Graph::get_listsize(){
 
 
 
+void Graph::dfs(int vertex){
+
+bool* visited=new bool[vertices];
+for(int i=0;i<vertices;i++){
+    visited[i]=false;
+}
+
+stack<int>s;
+s.push(vertex);
+visited[vertex]=true;
+while(!s.empty()){
+
+int top=s.top();
+s.pop();
+
+cout<<top<<" ";
+
+for(auto it:this->adjacency_list[top]){
+
+if(!visited[it]){
+    s.push(it);
+    visited[it]=true;
+}
+}
+
+}
+
+
+}
+
+
 
 
 
@@ -85,7 +117,6 @@ int main(){
 
 Graph g(5);
 
-g.get_listsize();
 
 g.add_edge_directed(0,2);
 g.add_edge_directed(0,3);
@@ -101,8 +132,10 @@ g.add_edge_directed(4,0);
 
 
 
+
 g.print_graph();
 
+g.dfs(0);
 
 
 return 1;

@@ -34,50 +34,6 @@ for(int i=0;i<size-1;i++){
 }
 
 
-void sorted_merge(int array[],int low,int mid, int high){
-
-int array1[mid-low+1];
-int array2[high-mid];
-
-int k=low;
-for(int i=low;i<(mid-low+1);i++){
-    array1[i++]=array[]
-}
-
-
-
-
-
-
-}
-
-
-
-
-void merge_sort(int array[],int low, int high){
-
-if(low<=high){
-
-
-int mid=low+(high-low)/2;
-
-merge_sort(array,low,mid-1);
-merge_sort(array,mid+1,high);
-sorted_merge(array,low,mid,high);
-
-
-
-
-
-
-}
-
-
-}
-
-
-
-
 
 
 

@@ -1,8 +1,8 @@
 #include"essentials.cpp"
 
-struct bnode{
+struct Bnode{
     int data;
-    struct bnode*right,*left;
+    struct Bnode*right,*left;
 
 };
 
@@ -12,9 +12,9 @@ struct dl_node{
 };
 
 
-struct bnode*newNode(int data){
+struct Bnode*NewNode(int data){
 
-struct bnode*node=(struct bnode*)malloc(sizeof(struct bnode));
+struct Bnode*node=(struct Bnode*)malloc(sizeof(struct Bnode));
 node->left=NULL;
 node->right=NULL;
 node->data=data;
@@ -25,7 +25,7 @@ return node;
 
 
 
-void inorder(struct bnode*root){
+void inorder(struct Bnode*root){
     if(root==NULL){
         return;
     }
@@ -66,33 +66,17 @@ node->data=data;
 }
 
 
-// void print_dll(struct dl_node*head){
-//     struct dl_node*temp=head;
-// if(temp==NULL){
-//     return;
-// }
-// else{
-//     struct dl_node*temp=head;
-//     while(temp->next!=head){
-//         cout<<temp->data<<" ";
-//         temp=temp->next;
-//     }
-
-// cout<<temp->data<<endl;
-// }
-
-// }
 
 
 
 
-void print_dll(struct bnode*head){
-    struct bnode*temp=head;
+void print_dll(struct Bnode*head){
+    struct Bnode*temp=head;
 if(temp==NULL){
     return;
 }
 else{
-    struct bnode*temp=head;
+    struct Bnode*temp=head;
     while(temp->right!=head){
         cout<<temp->data<<" ";
         temp=temp->right;
@@ -104,7 +88,7 @@ cout<<temp->data<<endl;
 }
 
 
-// void bst_to_circular_dll(struct bnode*root,struct dl_node**head){
+// void bst_to_circular_dll(struct Bnode*root,struct dl_node**head){
 
 // if(root==NULL){
 //     return;
@@ -120,7 +104,7 @@ cout<<temp->data<<endl;
 
 
 
-void bst_2_dll(struct bnode*root,struct bnode**head){
+void bst_2_dll(struct Bnode*root,struct Bnode**head){
 
 
 if(root==NULL){
@@ -129,7 +113,7 @@ if(root==NULL){
 
 else{
 
-static bnode*prev=NULL;
+static Bnode*prev=NULL;
 
 bst_2_dll(root->left,head);
 
@@ -159,21 +143,21 @@ bst_2_dll(root->right,head);
 
 
 
-void dll_2_circular(struct bnode**head){
+void dll_2_circular(struct Bnode**head){
 if(*head==NULL){
     return;
 }
 
 else{
 
-struct bnode*temp=*head;
+struct Bnode*temp=*head;
 while(temp->right!=NULL){
     temp=temp->right;
 }
 // cout<<temp->data;
 cout<<endl;
 temp->right=*head;
-struct bnode*first=*head;
+struct Bnode*first=*head;
 first->left=temp;
 // cout<<first->data<<" "<<first->left->data<<" "<<temp->data<<" "<<temp->right->data<<endl;
 
@@ -183,16 +167,16 @@ first->left=temp;
 
 
 int main(){
-struct bnode *root = newNode(38);
-    root->left     = newNode(30);
-    root->right     = newNode(56);
-    root->left->right = newNode(35);
-    root->left->right->left = newNode(32);
-    root->left->right->right = newNode(36);
-    root->right->right = newNode(60);
-    root->right->left = newNode(40);
-    root->left->left=newNode(20);
-    struct bnode*head=NULL;
+struct Bnode *root = NewNode(38);
+    root->left     = NewNode(30);
+    root->right     = NewNode(56);
+    root->left->right = NewNode(35);
+    root->left->right->left = NewNode(32);
+    root->left->right->right = NewNode(36);
+    root->right->right = NewNode(60);
+    root->right->left = NewNode(40);
+    root->left->left=NewNode(20);
+    struct Bnode*head=NULL;
 
     bst_2_dll(root,&head);
     

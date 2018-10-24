@@ -14,6 +14,7 @@ void add_edge_undirected(int v, int w);
 void add_edge_directed(int source, int dest);
 void print_graph();
 void get_listsize();
+void bfs(int vertex);
 
 };
 
@@ -78,12 +79,42 @@ void Graph::get_listsize(){
 
 
 
+void Graph::bfs(int vertex)
+{
+queue<int>q;
+q.push(vertex);
+bool*visited =new bool[vertices];
+visited[vertex]=true;
+
+
+while(!q.empty()){
+
+int top=q.front();
+q.pop();
+
+cout<<top<<" ";
+for(list<int>:: iterator i=adjacency_list[top].begin();i!=adjacency_list[top].end();++i){
+
+if(!visited[*i]){
+    q.push(*i);
+    visited[*i]=true;
+}
+}
+
+}
+
+}
+
+
+
+
 
 int main(){
 
 
 
 Graph g(5);
+
 
 g.get_listsize();
 
@@ -103,7 +134,7 @@ g.add_edge_directed(4,0);
 
 g.print_graph();
 
-
+g.bfs(2);
 
 return 1;
 

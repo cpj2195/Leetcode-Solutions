@@ -204,48 +204,7 @@ for(auto it:mp){
 
 
 
-void implement_phone_directory(TrieNode*root,string key){
 
-
-if(root==NULL){
-    return ;
-}
-
-else{
-    string key1="";
-    
-
-for(int i=0;i<key.length();i++){
-
-key1+=key[i];
-if(search(root,key1)){
-
-}
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-}
 
 
 

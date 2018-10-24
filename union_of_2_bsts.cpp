@@ -2,16 +2,16 @@
 
 
 
-struct bnode{
+struct Bnode{
     int data;
-    struct bnode*right,*left;
+    struct Bnode*right,*left;
 
 };
 
 
-struct bnode*newNode(int data){
+struct Bnode*NewNode(int data){
 
-struct bnode*node=(struct bnode*)malloc(sizeof(struct bnode));
+struct Bnode*node=(struct Bnode*)malloc(sizeof(struct Bnode));
 node->left=NULL;
 node->right=NULL;
 node->data=data;
@@ -20,7 +20,7 @@ return node;
 }
 
 
-void store_inorder(struct bnode*root,int *array,int *i){
+void store_inorder(struct Bnode*root,int *array,int *i){
 
 if(root==NULL){
     return;
@@ -38,7 +38,7 @@ store_inorder(root->right,array,i);
 }
 
 
-void union_bst(struct bnode*root1,struct bnode*root2){
+void union_bst(struct Bnode*root1,struct Bnode*root2){
 
 
 int *array=new int[15];
@@ -143,26 +143,26 @@ cout<<endl;
 
 int main(){
 
-struct bnode *root = newNode(38);
-    root->left     = newNode(30);
-    root->right     = newNode(56);
-    root->left->right = newNode(35);
-    root->left->right->left = newNode(32);
-    root->left->right->right = newNode(36);
-    root->right->right = newNode(60);
-    root->right->left = newNode(40);
-    root->left->left=newNode(20);
+struct Bnode *root = NewNode(38);
+    root->left     = NewNode(30);
+    root->right     = NewNode(56);
+    root->left->right = NewNode(35);
+    root->left->right->left = NewNode(32);
+    root->left->right->right = NewNode(36);
+    root->right->right = NewNode(60);
+    root->right->left = NewNode(40);
+    root->left->left=NewNode(20);
 
 
-struct bnode *root1 = newNode(39);
-    root1->left     = newNode(31);
-    root1->right     = newNode(70);
-    root1->left->right = newNode(35);
-    root1->left->right->left = newNode(34);
-    root1->left->right->right = newNode(37);
-    root1->right->right = newNode(72);
-    root1->right->left = newNode(69);
-    root1->left->left=newNode(29);
+struct Bnode *root1 = NewNode(39);
+    root1->left     = NewNode(31);
+    root1->right     = NewNode(70);
+    root1->left->right = NewNode(35);
+    root1->left->right->left = NewNode(34);
+    root1->left->right->right = NewNode(37);
+    root1->right->right = NewNode(72);
+    root1->right->left = NewNode(69);
+    root1->left->left=NewNode(29);
 
 
 union_bst(root,root1);

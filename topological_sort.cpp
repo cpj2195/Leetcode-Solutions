@@ -14,6 +14,8 @@ void add_edge_undirected(int v, int w);
 void add_edge_directed(int source, int dest);
 void print_graph();
 void get_listsize();
+void topological_sort(int vertex,bool visited[],stack<int>&s);
+void top_sort();
 
 };
 
@@ -79,6 +81,53 @@ void Graph::get_listsize(){
 
 
 
+void Graph::top_sort(){
+
+bool *visited=new bool[this->vertices];
+stack<int>s;
+for(int i=0;i<vertices;i++){
+    if(!visited[i]){
+        topological_sort(i,visited,s);
+    }
+}
+
+while(!s.empty()){
+    cout<<s.top()<<" ";
+    s.pop();
+}
+
+
+
+}
+
+
+void Graph::topological_sort(int vertex,bool visited[],stack<int>&s){
+
+
+visited[vertex]=true;
+
+
+for(list<int>:: iterator i=adjacency_list[vertex].begin();i!=adjacency_list[vertex].end();++i){
+
+if(!visited[*i]){
+    topological_sort(*i,visited,s);
+    
+}
+}
+
+
+s.push(vertex);
+
+
+
+
+
+
+}
+
+
+
+
 int main(){
 
 
@@ -99,11 +148,7 @@ g.add_edge_directed(4,0);
 
 
 
-
-
-g.print_graph();
-
-
+g.top_sort();
 
 return 1;
 
