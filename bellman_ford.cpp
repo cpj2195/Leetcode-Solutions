@@ -18,8 +18,9 @@ void addEdge(int source,int destination, int weight);
 void print_graph();
 
 
-void djikstras(int source);
 
+
+void bellman_ford(int source);
 
 
 };
@@ -67,46 +68,50 @@ for(auto it:this->adj_list){
 
 
 
-void Graph::djikstras(int source){
 
+void Graph::bellman_ford(int source){
 
 vector<int>dist(vertices,INT_MAX);
 dist[source]=0;
-priority_queue<pair<int,int>,vector<pair<int,int> >,greater<pair<int,int> > >pq;
-pq.push(make_pair(0,source));
+
+
+for(int i=1;i<=this->adj_list.size()-1;i++){
+    for(int j=0;j<this->adj_list.size();j++){
+        for(auto x:this->adj_list[j]){
+            int src=j;
+            int dest=x.first;
+            int w=x.second;
+            if(dist[src]!=INT_MAX && dist[dest]>dist[src]+w)
+            {
+                dist[dest]=dist[src]+w;
 
 
 
-while(!pq.empty())
-{
-int vertex=pq.top().second;
+            }
 
-pq.pop();
+        }
+    }
 
-for(auto it:this->adj_list[vertex])
-{
-
-int v=it.first;
-int w=it.second;
-if(dist[v]>dist[vertex]+w){
-
-dist[v]=dist[vertex]+w;
-pq.push(make_pair(dist[v],v));
-
-
-}
 
 
 
 }
 
 
+for(int j=0;j<this->adj_list.size();j++){
+        for(auto x:this->adj_list[j]){
+            int src=j;
+            int dest=x.first;
+            int w=x.second;
+            if(dist[src]!=INT_MAX && dist[dest]>dist[src]+w)
+            {
+                cout<<"Negative Cycle Exists in the Graph"<<endl;
 
 
 
+            }
 
-
-
+        }
 
 
 }
@@ -117,7 +122,22 @@ printf("Vertex   Distance from Source\n");
 
 
 
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -128,30 +148,22 @@ int main(){
 
 
 
-Graph g(8);
-g.addEdge(0, 1, 4); 
-g.addEdge(0, 7, 8); 
-g.addEdge(1, 2, 8); 
-g.addEdge(1, 7, 11); 
-g.addEdge(2, 3, 7); 
-g.addEdge(2, 8, 2); 
-g.addEdge(2, 5, 4); 
-g.addEdge(3, 4, 9); 
-g.addEdge(3, 5, 14); 
-g.addEdge(4, 5, 10); 
-g.addEdge(5, 6, 2); 
-g.addEdge(6, 7, 1); 
-g.addEdge(6, 8, 6); 
-g.addEdge(7, 8, 7); 
+Graph g(5);
 
 
 
+g.addEdge(0, 1, -1); 
+g.addEdge(0, 2, 4); 
+g.addEdge(1, 2, 3); 
+g.addEdge(1, 3, 2); 
+g.addEdge(1, 4, 2); 
+g.addEdge(3, 2, 5); 
+g.addEdge(3, 1, 1); 
+g.addEdge(4, 3, -3); 
 
 
+g.bellman_ford(0);
 
-
-
-g.djikstras(0);
 
 
 
