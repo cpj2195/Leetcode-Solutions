@@ -1,0 +1,8 @@
+.vscode
+a.out
+.output
+*.txt
+*.py
+test.cpp
+testing_ll.cpp
+practice_problems.code-workspace
