@@ -47,19 +47,18 @@ head=push_atend(head,5);
 head=push_atend(head,7);
 head=push_atend(head,14);
 head=push_atend(head,34);
-// head=push_atend(head,312);
-
 
 
 print_single_ll(head);
-cout<<"\n";
+
+
 struct node*head1=NULL;
 struct node*head2=NULL;
 alternating_split(&head,&head1,&head2);
 
     
 print_single_ll(head1);
-cout<<"\n";
+
 print_single_ll(head2);
 return 1;
 

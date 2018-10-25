@@ -1,6 +1,4 @@
-#include<iostream>
-#include<bits/stdc++.h>
-using namespace std;
+#include"essentials.cpp"
 
 
 int binary_search(int array[],int size,int low, int high,int key){

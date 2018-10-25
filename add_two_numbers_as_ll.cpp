@@ -14,11 +14,11 @@ int carry=0;
 
 while(temp || temp1){
 
-// int number;
+
 
 if(temp && temp1){
     number=temp->data+temp1->data+carry;
-    // cout<<number<<endl;
+    
     if(number>=10){
         
         number=number%10;
@@ -29,7 +29,7 @@ if(temp && temp1){
     else{
         carry=0;
     }
-    // cout<<number<<"  hi "<<endl;
+    
     head3=push_atend(head3,number);
     temp=temp->next;
     temp1=temp1->next;
@@ -90,38 +90,6 @@ void reverse_ll(struct node**head){
 }
 
 
-void add_1(struct node**head){
-
-
-// struct node*head3=NULL;
-reverse_ll(*&head);
-struct node*temp=*head;
-// struct node*temp1=head1;
-
-int number;
-int carry=0;
- int one=1;
-while(temp){
-
-number=temp->data+carry+one;
-
-if(number>=10){
-    temp->data=number%10;
-    carry=1;
-    one=0;
-}
-else{
-    temp->data=number;
-    carry=0;
-}
-temp=temp->next;
-
-}
-
-reverse_ll(*&head);
-
-
-}
 
 
 
@@ -143,16 +111,14 @@ int main(){
     head=push_atend(head,9);
     head=push_atend(head,9);
     head=push_atend(head,9);
-    // head=push_atend(head,6);
-    // head1=push_atend(head1,8);
-    // head1=push_atend(head1,4);
-    cout<<"\n" ;
+    head=push_atend(head,6);
+    head1=push_atend(head1,8);
+    head1=push_atend(head1,4);
     print_single_ll(head);
-    cout<<"\n" ;
-    // print_single_ll(head1);
-    add_1(&head);
-    // head3=add_two_numbers(head,head1);
-    cout<<"\n" ;
-    print_single_ll(head);
+    print_single_ll(head1);
+
+    
+    head3=add_two_numbers(head,head1);
+    print_single_ll(head3);
     return 1;
 }

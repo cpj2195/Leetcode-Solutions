@@ -36,8 +36,8 @@ bool check_balanced(string s){
                 
                 
                 if(!check_matching(mat,s[i])){
-                cout<<"pair matched"<<endl;
-                
+                cout<<"pair did not matched"<<endl;
+                return false;
                 }
                 
             }
@@ -62,7 +62,7 @@ bool check_balanced(string s){
 int main(){
 
 
-    string s="(]";
+    string s="(({[]}))";
     // cout<<s<endl;
     cout<<check_balanced(s)<<endl;
     return 1;
